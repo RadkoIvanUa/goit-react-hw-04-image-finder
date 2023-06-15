@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
 import ReactModal from 'react-modal';
 
 // BODYSCROLL LOCK LIBRARY
@@ -20,23 +19,20 @@ const customStyles = {
   overlay: { backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 1200 },
 };
 
-export class Modal extends Component {
-  render() {
-    const { isModalOpen, onCloseModal, largeImageURL } = this.props;
-    return (
-      <>
-        <ReactModal
-          style={customStyles}
-          isOpen={isModalOpen}
-          onRequestClose={onCloseModal}
-          onAfterOpen={disableBodyScroll}
-          onAfterClose={clearAllBodyScrollLocks}
-        >
-          <img src={largeImageURL} alt="" width="800px" />
-        </ReactModal>
-      </>
-    );
-  }
+export function Modal({ isModalOpen, onCloseModal, largeImageURL }) {
+  return (
+    <>
+      <ReactModal
+        style={customStyles}
+        isOpen={isModalOpen}
+        onRequestClose={onCloseModal}
+        onAfterOpen={disableBodyScroll}
+        onAfterClose={clearAllBodyScrollLocks}
+      >
+        <img src={largeImageURL} alt="" width="800px" />
+      </ReactModal>
+    </>
+  );
 }
 
 Modal.propTypes = {

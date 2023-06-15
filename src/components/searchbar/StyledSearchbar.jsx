@@ -14,7 +14,7 @@ export const SearchbarConatiner = styled.header({
   paddingTop: '12px',
   paddingBottom: '12px',
   color: '#fff',
-  backgroundColor: '#3f51b5',
+  backgroundColor: '#025464',
   boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
 });
@@ -24,9 +24,9 @@ export const SearchForm = styled.form({
   alignItems: 'center',
   width: '100%',
   maxWidth: '600px',
-  backgroundColor: '#fff',
   borderRadius: '3px',
   overflow: 'hidden',
+  backgroundColor: '#f8f1f1',
 });
 
 export const SearchFormButton = styled.button`
@@ -67,6 +67,7 @@ export const SearchFormInput = styled.input`
   outline: none;
   padding-left: 4px;
   padding-right: 4px;
+  background-color: #f8f1f1;
   &::placeholder {
     font: inherit;
     font-size: 18px;

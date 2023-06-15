@@ -6,7 +6,7 @@ export const LoadMoreButton = styled.button`
   gap: 5px;
   padding: 8px 16px;
   border-radius: 2px;
-  background-color: #3f51b5;
+  background-color: #025464;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   color: #fff;
   border: 0;
@@ -23,6 +23,7 @@ export const LoadMoreButton = styled.button`
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   &:hover,
   focus {
-    background-color: #303f9f;
+    background-color: #fff;
+    color: #025464;
   }
 `;

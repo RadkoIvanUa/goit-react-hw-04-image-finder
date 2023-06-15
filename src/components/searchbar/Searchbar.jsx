@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { MdImageSearch } from 'react-icons/md';
 import PropTypes from 'prop-types';
 
@@ -11,61 +11,49 @@ import {
   SearchFormInput,
 } from './StyledSearchbar';
 
-export class Searchbar extends Component {
-  state = {
-    searchQuery: '',
-    isSubmitButtonDisabled: true,
-  };
+export function Searchbar({ onSubmit }) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
 
-  heandleSubmit = e => {
+  const heandleSubmit = e => {
     e.preventDefault();
-
-    const { searchQuery } = this.state;
-    this.props.onSubmit(searchQuery);
+    onSubmit(searchQuery);
   };
 
-  heandleSearchInputChange = e => {
+  const heandleSearchInputChange = e => {
     const { value } = e.target;
 
-    this.setState({
-      searchQuery: value,
-      isSubmitButtonDisabled: false,
-    });
+    setSearchQuery(value);
+    setIsSubmitButtonDisabled(false);
 
     if (value.trim() === '') {
-      this.setState({
-        isSubmitButtonDisabled: true,
-      });
+      setIsSubmitButtonDisabled(true);
     }
   };
 
-  render() {
-    const { searchQuery, isSubmitButtonDisabled } = this.state;
+  return (
+    <SearchbarConatiner>
+      <SearchForm onSubmit={heandleSubmit}>
+        <SearchFormButton
+          type="submit"
+          disabled={isSubmitButtonDisabled}
+          className="button"
+        >
+          <MdImageSearch style={{ color: 'black' }} />
+          <SearchFormButtonLAbel></SearchFormButtonLAbel>
+        </SearchFormButton>
 
-    return (
-      <SearchbarConatiner>
-        <SearchForm onSubmit={this.heandleSubmit}>
-          <SearchFormButton
-            type="submit"
-            disabled={isSubmitButtonDisabled}
-            className="button"
-          >
-            <MdImageSearch style={{ color: 'black' }} />
-            <SearchFormButtonLAbel></SearchFormButtonLAbel>
-          </SearchFormButton>
-
-          <SearchFormInput
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-            value={searchQuery}
-            onChange={this.heandleSearchInputChange}
-          />
-        </SearchForm>
-      </SearchbarConatiner>
-    );
-  }
+        <SearchFormInput
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+          value={searchQuery}
+          onChange={heandleSearchInputChange}
+        />
+      </SearchForm>
+    </SearchbarConatiner>
+  );
 }
 
 Searchbar.propTypes = {
