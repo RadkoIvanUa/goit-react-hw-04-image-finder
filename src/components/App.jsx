@@ -26,7 +26,7 @@ export function App() {
     if (!searchQuery) {
       return;
     }
-    console.log('page :>> ', page);
+    setStatus('pending');
 
     const getPhotoResponse = getPhoto(searchQuery, page);
     getPhotoResponse.then(response => {
@@ -67,12 +67,11 @@ export function App() {
     setSearchQuery(searchQuery);
     setPage(1);
     setPhotosArr([]);
-    setStatus('pending');
   };
 
   // UPDATE NEXT PAGE
   const onLoandMore = () => {
-    setPage(page + 1);
+    setPage(prevPage => prevPage + 1);
     setStatus('pending');
   };
 
